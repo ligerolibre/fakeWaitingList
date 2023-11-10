@@ -36,11 +36,13 @@
     
     const genUrl = () => {
         let value = input.value;
-        genUrlText.innerText = 'https://wait.clickhere.kr/loading?q='+value;
-        genUrlText.href = './loading.html?q='+value;
-        let genUrlValue = genUrlText.innerText;
-        if (genUrlValue!='https://wait.clickhere.kr/loading?q=URL주소') copyBtn.disabled = false
-        else copyBtn.disabled = true
+        if (value.startsWith('http:')||value.startsWith('https:')) {
+            genUrlText.innerText = 'https://wait.clickhere.kr/loading?q='+value;
+            genUrlText.href = './loading.html?q='+value;
+            let genUrlValue = genUrlText.innerText;
+            if (genUrlValue!='https://wait.clickhere.kr/loading?q=URL주소') copyBtn.disabled = false
+            else copyBtn.disabled = true
+        } else alert('올바른 URL이 아닙니다.\n예시: https://example.com')
     }
 
     const copyUrl = () => {
