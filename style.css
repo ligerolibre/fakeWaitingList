@@ -11,10 +11,8 @@
     flex-flow: column;
     justify-content: center;
 }
-main {
-    margin-top: 250px;
-}
 .content-box {
+    margin-top: 250px;
     margin-left: auto;
     margin-right: auto;
     max-width: 800px;
@@ -67,4 +65,71 @@ main {
 }
 .copy-btn:hover {
     background-color: rgb(216, 216, 216);
+}
+.waiting-container {
+    margin: 10px;
+    display: flex;
+    flex-flow: column;
+    gap: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.num-container {
+    display: flex;
+    flex-flow: column;
+    gap: 8px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.waiting-title {
+    font-size: 20px;
+    font-weight: bolder;
+}
+.waiting-num {
+    font-size: 48px;
+    font-weight: bolder;
+}
+.waiting-alert-wait {
+    color: grey;
+}
+.waiting-alert-reload {
+    color: grey;
+}
+.progress-bar {
+    width: 80%;
+    max-width: 400px;
+    height: 20px;
+    background-color: rgb(205, 205, 205);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.progress-bar__bar {
+    width: 0px;
+    max-width: 400px;
+    height: 20px;
+    background-color: blueviolet;
+    border-radius: 10px;
+}
+footer {
+    margin-top: 100px;
+    text-align: center;
+    color: grey;
+}
+footer>a{
+    text-decoration: none;
+    color: grey;
+}
+.waiting-footer {
+    color: rgb(207, 207, 207);
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+    padding: 10px;
+}
+.waiting-footer>a{
+    text-decoration: none;
+    color: rgb(207, 207, 207);
 }

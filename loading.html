@@ -2,8 +2,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="waiting-container">
+        <div class="num-container">
+            <span class="waiting-title">나의 대기 순서</span>
+            <span class="waiting-num">로드 중...</span>
+        </div>
+        <span class="waiting-alert-wait">
+            현재 접속 인원이 많아 대기중입니다.<br>
+            잠시만 기다려주시면 페이지로 연결됩니다.
+        </span>
+        <div class="progress-bar">
+            <div class="progress-bar__bar"></div>
+        </div>
+        <span class="waiting-alert-reload">
+            ⚠️ 새로고침 하거나 재접속 하시면<br>
+            대기 순서가 초기화되어 대기시간이 더 길어집니다.
+        </span>
+    </div>
+    <div class="waiting-footer">
+        <span>Copyright 2023 Seoyoungwoo.</span><br>
+        <a href="./index.html">[메인으로]</a>
+        <a href="https://github.com/ligerolibre/fakeWaitingList">[GITHUB]</a>
+    </div>
 </body>
+<script>
+    let firstWaitNum = Math.floor(Math.random()*1000000)+10;
+    let waitNum = firstWaitNum;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const rediactUrl = urlParams.get('q');
+
+    const waitingNum = document.getElementsByClassName('waiting-num')[0];
+    const progBar = document.getElementsByClassName('progress-bar__bar')[0];
+
+    let i = 0;
+    let width = 0;
+    let newWaitNum = 0;
+    const frame = () => {
+        if (width >= 100) {
+            clearInterval(interval);
+            i = 0;
+            window.location.href = rediactUrl;
+        } else {
+            newWaitNum = waitNum - Math.floor(Math.random()*10000)+1000;
+            waitNum = newWaitNum<=0?0:newWaitNum;
+            width = (firstWaitNum-waitNum)/firstWaitNum*100
+            progBar.style.width = width +'%'
+            waitingNum.innerText = waitNum
+        }
+    }
+
+    let interval = setInterval(frame, 1000);
+</script>
 </html>
