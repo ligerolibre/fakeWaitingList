@@ -1,0 +1,48 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가짜 대기번호</title>
+    <meta name="description" content="가짜 티켓팅 대기번호 사이트">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>가짜 대기번호</h1>
+        <span>가짜 티켓팅 대기번호 사이트</span>
+    </header>
+    <main>
+        <div class="content-box">
+            <div class="input-container">
+                <input class="input-url" type="url" placeholder="이동할 URL 주소">
+                <button onclick="genUrl()" class="btn-url">생성하기</button>
+            </div>
+            <div class="gen-box">
+                <span class="gen-title">생성된 주소</span>
+                <a class="gen-url">https://wait.clickhere.kr/loading?q=URL주소</a>
+                <button disabled onclick="copyUrl()" class="copy-btn">복사하기</button>
+            </div>
+        </div>
+    </main>
+</body>
+<script>
+    const input = document.getElementsByClassName('input-url')[0];
+    const genUrlText = document.getElementsByClassName('gen-url')[0];
+    const copyBtn = document.getElementsByClassName('copy-btn')[0];
+    
+    const genUrl = () => {
+        let value = input.value;
+        genUrlText.innerText = 'https://wait.clickhere.kr/loading?q='+value;
+        genUrlText.href = 'https://wait.clickhere.kr/loading?q='+value;
+        let genUrlValue = genUrlText.innerText;
+        if (genUrlValue!='https://wait.clickhere.kr/loading?q=URL주소') copyBtn.disabled = false
+        else copyBtn.disabled = true
+    }
+
+    const copyUrl = () => {
+        navigator.clipboard.writeText(genUrlText.innerText);
+        alert(genUrlText.innerText+' URL을 복사했습니다.');
+    }
+
+</script>
+</html>
